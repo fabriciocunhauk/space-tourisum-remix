@@ -1,12 +1,13 @@
-import Background from '../../public/assets/crew/background-crew-desktop.jpg'
+import LayoutContainer from '~/components/LayoutContainer/LayoutContainer'
+import background from '../../public/assets/crew/background-crew-desktop.jpg'
 
 const crew = () => {
   return (
-    <div className="bg-cover bg-center bg-no-repeat flex justify-center w-screen h-screen"  style={{  backgroundImage: `url(${Background})`}}>
+    <LayoutContainer image={background}>
 
       <h1 className="text-slate-500 text-5xl">Space Tourism </h1>
       
-    </div>
+    </LayoutContainer>
   )
 }
 
