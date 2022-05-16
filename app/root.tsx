@@ -68,19 +68,7 @@ const Document = ({ children, title }: any) => {
 const Navbar = ({ children }: any) => {
   return (
     <div className="flex align-center justify-center">
-      <nav
-        className="
-    absolute
-     top-10 
-     bottom-0 
-     left-0 
-     right-0 
-     flex 
-     align-center 
-     justify-between 
-     bg-transparent"
-        style={{ height: "100px", width: "80%", margin: "0 auto" }}
-      >
+      <nav className="w-[80%] h-[100px] m-[0_auto] absolute top-10  bottom-0 left-0 right-0 flex align-center justify-between  bg-transparent">
         <Link to="/" className="flex items-center justify-around">
           <HomeLogo />
         </Link>
