@@ -1,14 +1,13 @@
 import type { MetaFunction } from "@remix-run/node";
 import {
   Links,
-  Link,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import HomeLogo from "./components/logos/HomeLogo";
+import { Navbar } from "./components/NavBar/NavBar";
 
 import styles from "./styles/tailwind.css";
 
@@ -62,32 +61,5 @@ const Document = ({ children, title }: any) => {
         <Scripts />
       </body>
     </html>
-  );
-};
-
-const Navbar = ({ children }: any) => {
-  return (
-    <div className="flex align-center justify-center">
-      <nav className="w-[80%] h-[100px] m-[0_auto] absolute top-10  bottom-0 left-0 right-0 flex align-center justify-between  bg-transparent">
-        <Link to="/" className="flex items-center justify-around">
-          <HomeLogo />
-        </Link>
-        <ul className="flex items-center justify-around text-white  bg-white bg-opacity-5 w-1/2">
-          <li className="">
-            <Link to="/">00 HOME</Link>
-          </li>
-          <li>
-            <Link to="/destination/moon">01 DESTINATION</Link>
-          </li>
-          <li>
-            <Link to="/crew">02 CREW</Link>
-          </li>
-          <li>
-            <Link to="/technology">03 TECHNOLOGY</Link>
-          </li>
-        </ul>
-      </nav>
-      <div>{children}</div>
-    </div>
   );
 };
