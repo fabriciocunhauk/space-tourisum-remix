@@ -508,6 +508,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 0.75rem;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -532,16 +540,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100px;
 }
 
-.h-\[50px\] {
-  height: 50px;
+.h-8 {
+  height: 2rem;
 }
 
-.h-full {
-  height: 100%;
-}
-
-.max-h-screen {
-  max-height: 100vh;
+.h-10 {
+  height: 2.5rem;
 }
 
 .min-h-screen {
@@ -566,14 +570,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-1\/2 {
   width: 50%;
-}
-
-.w-\[50px\] {
-  width: 50px;
-}
-
-.w-full {
-  width: 100%;
 }
 
 .cursor-pointer {
@@ -608,6 +604,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 9999px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .bg-primary {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -640,11 +645,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bg-no-repeat {
   background-repeat: no-repeat;
-}
-
-.object-none {
-  -o-object-fit: none;
-     object-fit: none;
 }
 
 .p-4 {
@@ -737,6 +737,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .first\:ml-\[-8px\]:first-child {
   margin-left: -8px;
+}
+
+.hover\:border-b-2:hover {
+  border-bottom-width: 2px;
 }
 
 .hover\:bg-opacity-5:hover {
