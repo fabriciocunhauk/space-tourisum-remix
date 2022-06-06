@@ -23,17 +23,20 @@ const destination = () => {
               );
             })}
           </ul>
-          <div>
-            <h1 className="text-8xl font-Bellefair leading-normal pl-2">
-              MOON
-            </h1>
-            <p className="text-secondary text-left font-Barlow w-96 leading-6 p-4">
-              See our planet as you’ve never seen it before. A perfect relaxing
-              trip away to help regain perspective and come back refreshed.
-              While you’re there, take in some history by visiting the Luna 2
-              and Apollo 11 landing sites.
-            </p>
-          </div>
+          {planetsData.map((planetBody) => {
+            const { id, name, caption } = planetBody;
+
+            return (
+              <div key={id}>
+                <h1 className="text-8xl font-Bellefair leading-normal pl-2">
+                  {name.toUpperCase()}
+                </h1>
+                <p className="text-secondary text-left font-Barlow w-96 leading-6 p-4">
+                  {caption}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </LayoutContainer>

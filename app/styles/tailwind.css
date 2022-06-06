@@ -492,6 +492,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 0 auto;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-40 {
   margin-top: 10rem;
 }
@@ -508,14 +512,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 0.75rem;
 }
 
-.mt-0 {
-  margin-top: 0px;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
 .flex {
   display: flex;
 }
@@ -528,6 +524,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 50%;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .h-96 {
   height: 24rem;
 }
@@ -538,14 +538,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-\[100px\] {
   height: 100px;
-}
-
-.h-8 {
-  height: 2rem;
-}
-
-.h-10 {
-  height: 2.5rem;
 }
 
 .min-h-screen {
@@ -602,10 +594,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .rounded-full {
   border-radius: 9999px;
-}
-
-.border-b-2 {
-  border-bottom-width: 2px;
 }
 
 .border-white {
