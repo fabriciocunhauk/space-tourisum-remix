@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import background from "../../../public/assets/destination/background-destination-mobile.jpg";
+import backgroundMobile from "../../../public/assets/destination/background-destination-mobile.jpg";
+import backgroundDesktop from "../../../public/assets/destination/background-destination-desktop.jpg";
 import LayoutContainer from "~/components/layout-container/LayoutContainer";
 import { Navbar } from "~/components/navbar/Navbar";
 import mars from "../../../public/assets/destination/image-mars.png";
 import moon from "../../../public/assets/destination/image-moon.png";
 import titan from "../../../public/assets/destination/image-titan.png";
 import europa from "../../../public/assets/destination/image-europa.png";
+import { useWindowDimensions } from "~/hooks/useWindowDimension";
 
 type Planets = {
   id: number;
@@ -17,6 +19,11 @@ type Planets = {
 
 export default function DestinationIndex() {
   const [planetId, setPlanetId] = useState(1);
+  const { width } = useWindowDimensions();
+
+  const sm = 640;
+  const md = 768;
+  const lg = 1024;
 
   const planetsData: any = [
     {
@@ -58,14 +65,15 @@ export default function DestinationIndex() {
   }, [planetId]);
 
   return (
-    <LayoutContainer image={background} className="text-white">
+    <LayoutContainer
+      image={width > sm ? backgroundDesktop : backgroundMobile}
+      className="text-white"
+    >
       <Navbar />
       <div className="grid grid-cols-1 sm:grid-cols-2 mt-36">
         <div className="grid grid-cols-1 place-items-center">
           <h1>01 PICK YOUR DESTINATION</h1>
           {planetsData.map((planet: { image: string; id: number }) => {
-            console.log(planet.image);
-
             if (planet.id === planetId) {
               return (
                 <img

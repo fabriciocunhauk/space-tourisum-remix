@@ -1,9 +1,11 @@
 import LayoutContainer from "~/components/layout-container/LayoutContainer";
+import { Navbar } from "~/components/navbar/Navbar";
 import background from "../../public/assets/home/background-home-desktop.jpg";
 
 export default function Home() {
   return (
     <LayoutContainer image={background}>
+      <Navbar />
       <div className="flex flex-wrap justify-around w-screen mt-40">
         <div className="text-primary">
           <p className="text-secondary text-3xl font-Barlow-Condensed font-light leading-8">
