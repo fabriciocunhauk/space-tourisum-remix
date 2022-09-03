@@ -492,8 +492,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 0 auto;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
+.m-5 {
+  margin: 1.25rem;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .mt-40 {
@@ -504,28 +508,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 5rem;
 }
 
-.mb-20 {
-  margin-bottom: 5rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
+.mt-36 {
+  margin-top: 9rem;
 }
 
 .flex {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .h-screen {
   height: 100vh;
-}
-
-.h-1\/2 {
-  height: 50%;
-}
-
-.h-10 {
-  height: 2.5rem;
 }
 
 .h-96 {
@@ -564,6 +560,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 50%;
 }
 
+.w-\[170px\] {
+  width: 170px;
+}
+
+.w-10\/12 {
+  width: 83.333333%;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -572,8 +576,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   resize: both;
 }
 
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.place-items-center {
+  place-items: center;
 }
 
 .items-center {
@@ -592,13 +604,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-content: space-around;
 }
 
-.rounded-full {
-  border-radius: 9999px;
+.gap-4 {
+  gap: 1rem;
 }
 
-.border-white {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .bg-primary {
@@ -635,16 +646,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-repeat: no-repeat;
 }
 
-.p-4 {
-  padding: 1rem;
-}
-
-.pl-2 {
-  padding-left: 0.5rem;
+.p-5 {
+  padding: 1.25rem;
 }
 
 .text-left {
   text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-Barlow-Condensed {
+  font-family: Barlow Condensed, sans-serif;
 }
 
 .font-Bellefair {
@@ -655,17 +670,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-family: Barlow, sans-serif;
 }
 
-.font-Barlow-Condensed {
-  font-family: Barlow Condensed, sans-serif;
-}
-
 .text-5xl {
   font-size: 3rem;
-  line-height: 1;
-}
-
-.text-8xl {
-  font-size: 6rem;
   line-height: 1;
 }
 
@@ -679,8 +685,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1;
 }
 
+.text-\[56px\] {
+  font-size: 56px;
+}
+
 .font-light {
   font-weight: 300;
+}
+
+.leading-8 {
+  line-height: 2rem;
 }
 
 .leading-normal {
@@ -689,10 +703,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .leading-6 {
   line-height: 1.5rem;
-}
-
-.leading-8 {
-  line-height: 2rem;
 }
 
 .text-slate-500 {
@@ -723,14 +733,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.first\:ml-\[-8px\]:first-child {
-  margin-left: -8px;
-}
-
-.hover\:border-b-2:hover {
-  border-bottom-width: 2px;
-}
-
 .hover\:bg-opacity-5:hover {
   --tw-bg-opacity: 0.05;
+}
+
+@media (min-width: 640px) {
+  .sm\:w-\[300px\] {
+    width: 300px;
+  }
+
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

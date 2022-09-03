@@ -1,5 +1,5 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx", "app/components/LayoutContainer"],
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx", "app/components/layout-container"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "isolatedModules": true,

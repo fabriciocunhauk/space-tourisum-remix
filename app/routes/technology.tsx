@@ -1,7 +1,7 @@
-import LayoutContainer from "~/components/LayoutContainer/LayoutContainer";
+import LayoutContainer from "~/components/layout-container/LayoutContainer";
 import background from "../../public/assets/technology/background-technology-desktop.jpg";
 
-const technology = () => {
+export default function Technology() {
   return (
     <LayoutContainer image={background}>
       <div className="w-screen h-screen">
@@ -9,6 +9,4 @@ const technology = () => {
       </div>
     </LayoutContainer>
   );
-};
-
-export default technology;
+}

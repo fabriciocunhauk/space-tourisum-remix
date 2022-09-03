@@ -7,7 +7,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { Navbar } from "./components/NavBar/NavBar";
 
 import styles from "./styles/tailwind.css";
 
@@ -27,9 +26,7 @@ export const meta: MetaFunction = () => {
 export default function App() {
   return (
     <Document>
-      <Navbar>
-        <Outlet />
-      </Navbar>
+      <Outlet />
     </Document>
   );
 }

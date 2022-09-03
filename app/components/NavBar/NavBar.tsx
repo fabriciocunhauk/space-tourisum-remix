@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "@remix-run/react";
 import HomeLogo from "../logos/HomeLogo";
-import NavbarBurger from "./components/NavbarBurger";
 import { useWindowDimensions } from "~/hooks/useWindowDimension";
+import NavbarBurger from "../../icons/NavbarBurger";
 
 export const Navbar = ({ children }: any) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -29,7 +29,7 @@ export const Navbar = ({ children }: any) => {
               <Link to="/">00 HOME</Link>
             </li>
             <li>
-              <Link to="/destination/moon">01 DESTINATION</Link>
+              <Link to="/destination">01 DESTINATION</Link>
             </li>
             <li>
               <Link to="/crew">02 CREW</Link>

@@ -1,4 +1,4 @@
-import LayoutContainer from "~/components/LayoutContainer/LayoutContainer";
+import LayoutContainer from "~/components/layout-container/LayoutContainer";
 import background from "../../public/assets/home/background-home-desktop.jpg";
 
 export default function Home() {

@@ -1,7 +1,7 @@
-import LayoutContainer from "~/components/LayoutContainer/LayoutContainer";
+import LayoutContainer from "~/components/layout-container/LayoutContainer";
 import background from "../../public/assets/crew/background-crew-desktop.jpg";
 
-const crew = () => {
+export default function Crew() {
   return (
     <LayoutContainer image={background}>
       <div className="w-screen h-screen">
@@ -9,6 +9,4 @@ const crew = () => {
       </div>
     </LayoutContainer>
   );
-};
-
-export default crew;
+}
