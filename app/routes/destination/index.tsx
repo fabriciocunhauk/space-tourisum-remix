@@ -70,7 +70,7 @@ export default function DestinationIndex() {
       <Navbar />
       <div className="grid grid-cols-1 lg:grid-cols-2 mt-36">
         <div className="grid grid-cols-1 place-items-center">
-          <h1 className="text-[20px] font-light md:place-self-start lg:pl-28 lg:text-[28px]">
+          <h1 className="text-[20px] font-light md:place-self-start md:pl-10 lg:pl-28 lg:text-[28px]">
             01 PICK YOUR DESTINATION
           </h1>
           {planetsData.map((planet: { image: string; id: number }) => {
@@ -91,10 +91,7 @@ export default function DestinationIndex() {
           <div className="grid grid-cols-1 place-content-center p-5 md:w-[573px] lg:h-[472px] lg:w-[444px]">
             <ul className="flex justify-around items-center place-self-center m-auto sm:m-0 gap-4 w-[237.5px] sm:w-[330px] lg:place-self-start">
               {planetsData.map((planet: { id: number; name: string }) => (
-                <li
-                  key={planet.id}
-                  className="hover:border-b-[3px] h-10 text-base"
-                >
+                <li key={planet.id} className="hover:border-b-2 h-10 text-base">
                   <button onClick={() => handleSelection(planet.id)}>
                     {planet.name.toUpperCase()}
                   </button>
@@ -120,8 +117,8 @@ export default function DestinationIndex() {
                 }
               )}
             </div>
-            <hr className="opacity-20 p-3 max-w-[444px]" />
-            <div className="grid grid-cols-2 lg:grid-cols-2 text-center max-w-[444px]">
+            <hr className="opacity-20 p-3 md:w-[535px]  lg:w-[410px]" />
+            <div className="grid grid-cols-2 text-center md:w-[535px] lg:w-[444px] lg:grid-cols-2">
               <div className="lg:place-self-start">
                 <h2 className="font-Barlow text-lg text text-secondary">
                   AVG. DISTANCE

@@ -27,17 +27,17 @@ export const Navbar = ({ children }: any) => {
           <HomeLogo />
         </Link>
         {isMobile ? (
-          <ul className="flex items-center justify-around text-white  bg-white bg-opacity-5 w-1/2 h-[100px]">
-            <li className="">
+          <ul className="flex items-center justify-around text-white pt-4 bg-white bg-opacity-5 w-1/2 h-[100px]">
+            <li className="border-primary hover:border-b-2 h-10 cursor:pointer">
               <Link to="/">00 HOME</Link>
             </li>
-            <li>
+            <li className="border-primary hover:border-b-2 h-10 cursor:pointer">
               <Link to="/destination">01 DESTINATION</Link>
             </li>
-            <li>
+            <li className="border-primary hover:border-b-2 h-10 cursor:pointer">
               <Link to="/crew">02 CREW</Link>
             </li>
-            <li>
+            <li className="border-primary hover:border-b-2 h-10 cursor:pointer">
               <Link to="/technology">03 TECHNOLOGY</Link>
             </li>
           </ul>
