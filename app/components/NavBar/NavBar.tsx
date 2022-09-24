@@ -19,8 +19,11 @@ export const Navbar = ({ children }: any) => {
 
   return (
     <div className="flex align-center justify-center min-w-screen min-h-screen">
-      <nav className="w-[80%] h-[100px] m-[0_auto] absolute top-10  bottom-0 left-0 right-0 flex items-center justify-between  bg-transparent">
-        <Link to="/" className="flex items-center justify-around">
+      <nav className="w-[90%] h-[100px] m-[0_auto] absolute top-0 bottom-0 left-0 right-0 flex items-center justify-between bg-transparent md:w-screen lg:w-[90%] lg:top-10">
+        <Link
+          to="/"
+          className="flex items-center justify-around sm:ml-10 lg:ml-0"
+        >
           <HomeLogo />
         </Link>
         {isMobile ? (

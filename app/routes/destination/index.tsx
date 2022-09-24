@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import backgroundMobile from "../../../public/assets/destination/background-destination-mobile.jpg";
 import backgroundDesktop from "../../../public/assets/destination/background-destination-desktop.jpg";
 import LayoutContainer from "~/components/layout-container/LayoutContainer";
@@ -22,8 +22,6 @@ export default function DestinationIndex() {
   const { width } = useWindowDimensions();
 
   const sm = 640;
-  const md = 768;
-  const lg = 1024;
 
   const planetsData: any = [
     {
@@ -67,17 +65,19 @@ export default function DestinationIndex() {
   return (
     <LayoutContainer
       image={width > sm ? backgroundDesktop : backgroundMobile}
-      className="text-white"
+      className="text-white w-screen"
     >
       <Navbar />
-      <div className="grid grid-cols-1 sm:grid-cols-2 mt-36">
+      <div className="grid grid-cols-1 lg:grid-cols-2 mt-36">
         <div className="grid grid-cols-1 place-items-center">
-          <h1>01 PICK YOUR DESTINATION</h1>
+          <h1 className="text-[20px] font-light md:place-self-start lg:pl-28 lg:text-[28px]">
+            01 PICK YOUR DESTINATION
+          </h1>
           {planetsData.map((planet: { image: string; id: number }) => {
             if (planet.id === planetId) {
               return (
                 <img
-                  className="w-[170px] sm:w-[300px] m-5"
+                  className="w-[300px] h-[300px] mt-10 lg:w-[445px] lg:h-[445px] lg:mb-16"
                   key={planet.id}
                   src={planet.image}
                   alt="planet"
@@ -87,39 +87,55 @@ export default function DestinationIndex() {
             return null;
           })}
         </div>
-        <div className="grid grid-cols-1 place-items-center">
-          <ul className="flex justify-around gap-4 w-10/12">
-            {planetsData.map((planet: { id: number; name: string }) => (
-              <li key={planet.id}>
-                <button onClick={() => handleSelection(planet.id)}>
-                  {planet.name.toUpperCase()}
-                </button>
-              </li>
-            ))}
-          </ul>
-          {planetsData.map(
-            (planet: { id: number; name: string; caption: string }) => {
-              if (planet.id === planetId) {
-                return (
-                  <div className="p-5 text-center">
-                    <h2 className="text-[56px] font-Bellefair">
-                      {planet.name.toUpperCase()}
-                    </h2>
-                    <p className="text-center font-Barlow">{planet.caption}</p>
-                  </div>
-                );
-              }
-              return null;
-            }
-          )}
-        </div>
-        <hr />
-        <div className="text-center">
-          <h2>AVG. DISTANCE</h2>
-          <span>384,400 KM</span>
-
-          <h2>EST. TRAVEL TIME</h2>
-          <span>3 DAYS</span>
+        <div className="place-items-center sm:p-28">
+          <div className="grid grid-cols-1 place-content-center p-5 md:w-[573px] lg:h-[472px] lg:w-[444px]">
+            <ul className="flex justify-around items-center place-self-center m-auto sm:m-0 gap-4 w-[237.5px] sm:w-[330px] lg:place-self-start">
+              {planetsData.map((planet: { id: number; name: string }) => (
+                <li
+                  key={planet.id}
+                  className="hover:border-b-[3px] h-10 text-base"
+                >
+                  <button onClick={() => handleSelection(planet.id)}>
+                    {planet.name.toUpperCase()}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <div className="py-5 text-center lg:text-left h-72">
+              {planetsData.map(
+                (planet: { id: number; name: string; caption: string }) => {
+                  if (planet.id === planetId) {
+                    return (
+                      <Fragment key={planet.id}>
+                        <h2 className="text-[56px] font-Bellefair md:text-[80px] lg:text-8xl">
+                          {planet.name.toUpperCase()}
+                        </h2>
+                        <p className="text-center lg:text-left font-Barlow">
+                          {planet.caption}
+                        </p>
+                      </Fragment>
+                    );
+                  }
+                  return null;
+                }
+              )}
+            </div>
+            <hr className="opacity-20 p-3 max-w-[444px]" />
+            <div className="grid grid-cols-2 lg:grid-cols-2 text-center max-w-[444px]">
+              <div className="lg:place-self-start">
+                <h2 className="font-Barlow text-lg text text-secondary">
+                  AVG. DISTANCE
+                </h2>
+                <span className="text-[28px] font-Bellefair">384,400 KM</span>
+              </div>
+              <div className="lg:place-self-start">
+                <h2 className="font-Barlow text-lg text text-secondary">
+                  EST. TRAVEL TIME
+                </h2>
+                <span className="text-[28px] font-Bellefair">3 DAYS</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </LayoutContainer>

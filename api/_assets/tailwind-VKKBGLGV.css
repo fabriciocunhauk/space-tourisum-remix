@@ -1236,10 +1236,6 @@ video {
     margin-bottom: 4rem;
   }
 
-  .lg\:ml-0 {
-    margin-left: 0px;
-  }
-
   .lg\:h-\[445px\] {
     height: 445px;
   }
@@ -1262,10 +1258,6 @@ video {
 
   .lg\:w-\[444px\] {
     width: 444px;
-  }
-
-  .lg\:w-\[90\%\] {
-    width: 90%;
   }
 
   .lg\:grid-cols-2 {
