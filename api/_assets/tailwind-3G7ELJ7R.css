@@ -921,10 +921,6 @@ body {
   --tw-ring-offset-width: 4px;
 }
 
-.ring-offset-0 {
-  --tw-ring-offset-width: 0px;
-}
-
 .duration-500 {
   transition-duration: 500ms;
 }

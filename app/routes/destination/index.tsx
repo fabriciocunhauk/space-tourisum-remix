@@ -78,7 +78,7 @@ export default function DestinationIndex() {
       <Navbar />
       <div className="grid grid-cols-1 lg:grid-cols-2 mt-36">
         <div className="grid grid-cols-1 place-items-center">
-          <h1 className="text-[20px] font-light md:place-self-start md:pl-10 lg:pl-28 lg:text-[28px]">
+          <h1 className="text-[20px] font-light font-Barlow md:place-self-start md:pl-10 lg:pl-28 lg:text-[28px]">
             01 PICK YOUR DESTINATION
           </h1>
           {planetsData.map((planet: { image: string; id: number }) => {
