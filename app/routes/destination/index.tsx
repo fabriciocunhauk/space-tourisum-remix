@@ -30,6 +30,8 @@ export default function DestinationIndex() {
       name: "moon",
       caption:
         "Facts About The Moon The Moon is Earth's only natural satellite and the fifth largest moon in the solar system. The Moon's presence helps stabilize our planet's wobble and moderate our climate. The Moon's distance from Earth is about 240,000 miles (385,000km). The Moon has a very thin atmosphere called an exosphere.",
+      distance: "384,400 km",
+      travel_time: "3 days",
     },
     {
       id: 2,
@@ -37,6 +39,8 @@ export default function DestinationIndex() {
       name: "mars",
       caption:
         "Mars tugs at the human imagination like no other planet. With a force mightier than gravity, it attracts the eye to the shimmering red presence in the clear night sky.” “I think humans will reach Mars, and I would like to see it happen in my lifetime.",
+      distance: "225 MIL. km",
+      travel_time: "9 months",
     },
     {
       id: 3,
@@ -44,6 +48,8 @@ export default function DestinationIndex() {
       name: "europa",
       caption:
         "Structure. Like our planet, Europa is thought to have an iron core, a rocky mantle, and an ocean of salty water. Unlike Earth, however, Europa's ocean lies below a shell of ice probably 10 to 15 miles (15 to 25 kilometers) thick, and has an estimated depth of 40 to 100 miles (60 to 150 kilometers).",
+      distance: "628 MIL. km",
+      travel_time: "3 years",
     },
     {
       id: 4,
@@ -51,6 +57,8 @@ export default function DestinationIndex() {
       name: "titan",
       caption:
         "Titan is bigger than Earth's moon, and larger than even the planet Mercury. This mammoth moon is the only moon in the solar system with a dense atmosphere, and it's the only world besides Earth that has standing bodies of liquid, including rivers, lakes and seas, on its surface.",
+      distance: "1.6 BIL. km",
+      travel_time: "7 years",
     },
   ];
 
@@ -119,18 +127,37 @@ export default function DestinationIndex() {
             </div>
             <hr className="opacity-20 p-3 md:w-[535px]  lg:w-[410px]" />
             <div className="grid grid-cols-2 text-center md:w-[535px] lg:w-[444px] lg:grid-cols-2">
-              <div className="lg:place-self-start">
-                <h2 className="font-Barlow text-lg text text-secondary">
-                  AVG. DISTANCE
-                </h2>
-                <span className="text-[28px] font-Bellefair">384,400 KM</span>
-              </div>
-              <div className="lg:place-self-start">
-                <h2 className="font-Barlow text-lg text text-secondary">
-                  EST. TRAVEL TIME
-                </h2>
-                <span className="text-[28px] font-Bellefair">3 DAYS</span>
-              </div>
+              {planetsData.map(
+                (travelDetails: {
+                  id: number;
+                  distance: string;
+                  travel_time: string;
+                }) => {
+                  if (travelDetails.id === planetId) {
+                    return (
+                      <Fragment key={travelDetails.id}>
+                        <div className="lg:place-self-start">
+                          <h2 className="font-Barlow text-lg text text-secondary">
+                            AVG. DISTANCE
+                          </h2>
+                          <span className="text-[28px] font-Bellefair">
+                            {travelDetails.distance}
+                          </span>
+                        </div>
+                        <div className="lg:place-self-start">
+                          <h2 className="font-Barlow text-lg text text-secondary">
+                            EST. TRAVEL TIME
+                          </h2>
+                          <span className="text-[28px] font-Bellefair">
+                            {travelDetails.travel_time}
+                          </span>
+                        </div>
+                      </Fragment>
+                    );
+                  }
+                  return null;
+                }
+              )}
             </div>
           </div>
         </div>
