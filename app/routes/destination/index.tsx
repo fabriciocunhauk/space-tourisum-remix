@@ -8,6 +8,8 @@ import moon from "../../../public/assets/destination/image-moon.png";
 import titan from "../../../public/assets/destination/image-titan.png";
 import europa from "../../../public/assets/destination/image-europa.png";
 import { useWindowDimensions } from "~/hooks/useWindowDimension";
+import { json, LoaderFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 
 type Planets = {
   id: number;
@@ -17,9 +19,23 @@ type Planets = {
   caption: string;
 };
 
+export const loader: LoaderFunction = async () => {
+  const res = await fetch(
+    "https://api.le-systeme-solaire.net/rest/bodies/lune"
+  );
+
+  const planet = await res.json();
+
+  return planet;
+};
+
 export default function DestinationIndex() {
   const [planetId, setPlanetId] = useState(1);
   const { width } = useWindowDimensions();
+
+  const planet = useLoaderData();
+
+  console.log(planet);
 
   const sm = 640;
 
@@ -107,23 +123,14 @@ export default function DestinationIndex() {
               ))}
             </ul>
             <div className="py-5 text-center lg:text-left h-72">
-              {planetsData.map(
-                (planet: { id: number; name: string; caption: string }) => {
-                  if (planet.id === planetId) {
-                    return (
-                      <Fragment key={planet.id}>
-                        <h2 className="text-[56px] font-Bellefair md:text-[80px] lg:text-8xl">
-                          {planet.name.toUpperCase()}
-                        </h2>
-                        <p className="text-center lg:text-left font-Barlow">
-                          {planet.caption}
-                        </p>
-                      </Fragment>
-                    );
-                  }
-                  return null;
-                }
-              )}
+              <Fragment key={planet.id}>
+                <h2 className="text-[56px] font-Bellefair md:text-[80px] lg:text-8xl">
+                  {planet.englishName.toUpperCase()}
+                </h2>
+                <p className="text-center lg:text-left font-Barlow">
+                  {planet.name}
+                </p>
+              </Fragment>
             </div>
             <hr className="opacity-20 p-3 md:w-[535px]  lg:w-[410px]" />
             <div className="grid grid-cols-2 text-center md:w-[535px] lg:w-[444px] lg:grid-cols-2">
@@ -138,18 +145,18 @@ export default function DestinationIndex() {
                       <Fragment key={travelDetails.id}>
                         <div className="lg:place-self-start">
                           <h2 className="font-Barlow text-lg text text-secondary">
-                            AVG. DISTANCE
+                            VOLUME
                           </h2>
                           <span className="text-[28px] font-Bellefair">
-                            {travelDetails.distance}
+                            {planet.vol.volValue}
                           </span>
                         </div>
                         <div className="lg:place-self-start">
                           <h2 className="font-Barlow text-lg text text-secondary">
-                            EST. TRAVEL TIME
+                            GRAVITY
                           </h2>
                           <span className="text-[28px] font-Bellefair">
-                            {travelDetails.travel_time}
+                            {planet.gravity}
                           </span>
                         </div>
                       </Fragment>
