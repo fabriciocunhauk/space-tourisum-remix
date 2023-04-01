@@ -864,14 +864,6 @@ body {
   line-height: 1.75rem;
 }
 
-.text-\[200px\] {
-  font-size: 200px;
-}
-
-.text-\[250px\] {
-  font-size: 250px;
-}
-
 .font-light {
   font-weight: 300;
 }

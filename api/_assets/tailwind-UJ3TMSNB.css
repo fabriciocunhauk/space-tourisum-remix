@@ -859,19 +859,6 @@ body {
   font-size: 28px;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-\[200px\] {
-  font-size: 200px;
-}
-
-.text-\[250px\] {
-  font-size: 250px;
-}
-
 .font-light {
   font-weight: 300;
 }

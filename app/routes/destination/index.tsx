@@ -8,16 +8,8 @@ import moon from "../../../public/assets/destination/image-moon.png";
 import titan from "../../../public/assets/destination/image-titan.png";
 import europa from "../../../public/assets/destination/image-europa.png";
 import { useWindowDimensions } from "~/hooks/useWindowDimension";
-import { json, LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-
-type Planets = {
-  id: number;
-  image: string;
-  name: string;
-  link: string;
-  caption: string;
-};
 
 export const loader: LoaderFunction = async () => {
   const res = await fetch(

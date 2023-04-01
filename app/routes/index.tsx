@@ -1,6 +1,18 @@
 import LayoutContainer from "~/components/layout-container/LayoutContainer";
 import { Navbar } from "~/components/navbar/Navbar";
 import background from "../../public/assets/home/background-home-desktop.jpg";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+
+export const loader: LoaderFunction = async () => {
+  const res = await fetch(
+    "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+  );
+  const data = await res.json();
+  console.log(data);
+
+  return json({ data: { name: "John" } });
+};
 
 export default function Home() {
   return (
