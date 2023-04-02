@@ -10,6 +10,7 @@ import Dot from "~/icons/Dot";
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import Container from "~/components/Container/Container";
 
 export const loader: LoaderFunction = async () => {
   const res = await fetch("http://api.open-notify.org/astros.json");
@@ -58,51 +59,34 @@ type LoaderProps = { craft: string; name: string };
 export default function Crew() {
   const { data, numberOfPeople, people } = useLoaderData();
   console.log({ data, numberOfPeople, people });
-
-  const [crewId, setCrewId] = useState(1);
-
-  const handleSelection = (crewId: number) => {
-    setCrewId(crewId);
-  };
-
-  // useEffect(() => {
-  //   setCrewId(crewId);
-  // }, [crewId]);
   return (
     <LayoutContainer image={background} className="text-white">
       <Navbar />
-      <div className="grid grid-cols-1 lg:grid-cols-2 p-5 w-screen">
-        <div className="flex flex-col items-center justify-between">
+      <Container
+        classes={{
+          container: "p-5 w-screen mt-20",
+        }}
+      >
+        <div className="flex flex-col items-center">
           <h1 className="text-[20px] font-light lg:text-[28px]">
             NUMBER OF PEOPLE IN SPACE
           </h1>
           <span className="text-[250px]">{numberOfPeople}</span>
         </div>
-        <div className="flex flex-col items-center justify-between">
+        <div className="flex flex-col m-auto max-w-[370px] divide-y divide-solid">
           <h1 className="text-[20px] font-light text-center lg:text-[28px]">
             02 MEET YOUR CREW
           </h1>
-          {people.map(
-            (
-              { craft, name }: { craft: string; name: number },
-              idex: number
-            ) => {
-              return (
-                <ul key={idex}>
-                  <li>Craft: {craft}</li>
-                  <li>Crew member: {name}</li>
-                  {/* <img
-                      className="w-[177.12px] h-[222px] mt-10 lg:w-[445px] lg:h-[445px] lg:mb-16 place-self-center "
-                      src={crew.image}
-                      alt="crew member"
-                    /> */}
-                  <hr className="opacity-20 md:w-[535px]  lg:w-[410px]" />
-                </ul>
-              );
-            }
-          )}
+          {people.map(({ craft, name }: LoaderProps, idex: number) => {
+            return (
+              <ul key={idex} className="py-2">
+                <li>CRAFT: {craft}</li>
+                <li>CREW MEMBER: {name}</li>
+              </ul>
+            );
+          })}
         </div>
-      </div>
+      </Container>
     </LayoutContainer>
   );
 }

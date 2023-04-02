@@ -10,6 +10,7 @@ import europa from "../../../public/assets/destination/image-europa.png";
 import { useWindowDimensions } from "~/hooks/useWindowDimension";
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import Container from "~/components/Container/Container";
 
 export const loader: LoaderFunction = async () => {
   const res = await fetch(
@@ -27,7 +28,7 @@ export default function DestinationIndex() {
 
   const planet = useLoaderData();
 
-  console.log(planet);
+  // console.log(planet);
 
   const sm = 640;
 
@@ -84,7 +85,7 @@ export default function DestinationIndex() {
       className="text-white w-screen"
     >
       <Navbar />
-      <div className="grid grid-cols-1 lg:grid-cols-2 mt-36">
+      <Container>
         <div className="grid grid-cols-1 place-items-center">
           <h1 className="text-[20px] font-light font-Barlow md:place-self-start md:pl-10 lg:pl-28 lg:text-[28px]">
             01 PICK YOUR DESTINATION
@@ -160,7 +161,7 @@ export default function DestinationIndex() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </LayoutContainer>
   );
 }

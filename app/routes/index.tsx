@@ -3,22 +3,27 @@ import { Navbar } from "~/components/navbar/Navbar";
 import background from "../../public/assets/home/background-home-desktop.jpg";
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import Container from "~/components/Container/Container";
 
 export const loader: LoaderFunction = async () => {
   const res = await fetch(
-    "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+    `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}`
   );
-  const data = await res.json();
-  console.log(data);
+  const imageOfTheDay = await res.json();
 
-  return json({ data: { name: "John" } });
+  return json({ imageOfTheDay });
 };
 
 export default function Home() {
+  const { imageOfTheDay } = useLoaderData();
+
   return (
-    <LayoutContainer image={background}>
+    <LayoutContainer image={imageOfTheDay.url}>
       <Navbar />
-      <div className="flex flex-wrap justify-around w-screen mt-40">
+      <Container
+        classes={{ container: "flex flex-wrap justify-around w-screen mt-40" }}
+      >
         <div className="text-primary">
           <p className="text-secondary text-3xl font-Barlow-Condensed font-light leading-8">
             SO, YOU WANT TO TRAVEL TO
@@ -36,7 +41,7 @@ export default function Home() {
             <p className="text-3xl font-Bellefair">EXPLORE</p>
           </button>
         </div>
-      </div>
+      </Container>
     </LayoutContainer>
   );
 }

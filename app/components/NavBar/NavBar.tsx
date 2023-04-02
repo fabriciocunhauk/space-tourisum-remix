@@ -38,7 +38,7 @@ export const Navbar = ({ children }: any) => {
               <Link to="/crew">02 CREW</Link>
             </li>
             <li className="border-primary hover:border-b-2 h-10 cursor:pointer">
-              <Link to="/technology">03 TECHNOLOGY</Link>
+              <Link to="/launch">03 LAUNCH</Link>
             </li>
           </ul>
         ) : (
