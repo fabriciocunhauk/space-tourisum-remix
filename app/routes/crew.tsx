@@ -11,6 +11,7 @@ import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import Container from "~/components/Container/Container";
+import Card from "~/components/Card/Card";
 
 export const loader: LoaderFunction = async () => {
   const res = await fetch("http://api.open-notify.org/astros.json");
@@ -58,13 +59,12 @@ type LoaderProps = { craft: string; name: string };
 
 export default function Crew() {
   const { data, numberOfPeople, people } = useLoaderData();
-  console.log({ data, numberOfPeople, people });
+  // console.log({ data, numberOfPeople, people });
   return (
-    <LayoutContainer image={background} className="text-white">
-      <Navbar />
+    <LayoutContainer image={background} classes={{ root: "text-white" }}>
       <Container
         classes={{
-          container: "p-5 w-screen mt-20",
+          container: "p-5 w-screen",
         }}
       >
         <div className="flex flex-col items-center">
@@ -73,16 +73,16 @@ export default function Crew() {
           </h1>
           <span className="text-[250px]">{numberOfPeople}</span>
         </div>
-        <div className="flex flex-col m-auto max-w-[370px] divide-y divide-solid">
+        <div className="flex flex-col gap-4">
           <h1 className="text-[20px] font-light text-center lg:text-[28px]">
             02 MEET YOUR CREW
           </h1>
           {people.map(({ craft, name }: LoaderProps, idex: number) => {
             return (
-              <ul key={idex} className="py-2">
-                <li>CRAFT: {craft}</li>
-                <li>CREW MEMBER: {name}</li>
-              </ul>
+              <Card key={idex} classes={{ card: "py-2" }}>
+                <p>CRAFT: {craft}</p>
+                <p>CREW MEMBER: {name}</p>
+              </Card>
             );
           })}
         </div>

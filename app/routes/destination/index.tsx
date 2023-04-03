@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import backgroundMobile from "../../../public/assets/destination/background-destination-mobile.jpg";
 import backgroundDesktop from "../../../public/assets/destination/background-destination-desktop.jpg";
 import LayoutContainer from "~/components/layout-container/LayoutContainer";
-import { Navbar } from "~/components/navbar/Navbar";
 import mars from "../../../public/assets/destination/image-mars.png";
 import moon from "../../../public/assets/destination/image-moon.png";
 import titan from "../../../public/assets/destination/image-titan.png";
@@ -85,9 +84,8 @@ export default function DestinationIndex() {
   return (
     <LayoutContainer
       image={width > sm ? backgroundDesktop : backgroundMobile}
-      className="text-white w-screen"
+      classes={{ root: "text-white w-screen" }}
     >
-      <Navbar />
       <Container>
         <div className="grid grid-cols-1 place-items-center">
           <h1 className="text-[20px] font-light font-Barlow md:place-self-start md:pl-10 lg:pl-28 lg:text-[28px]">

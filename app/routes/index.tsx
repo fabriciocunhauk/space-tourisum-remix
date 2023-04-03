@@ -20,9 +20,8 @@ export default function Home() {
 
   return (
     <LayoutContainer image={imageOfTheDay.url}>
-      <Navbar />
       <Container
-        classes={{ container: "flex flex-wrap justify-around w-screen mt-40" }}
+        classes={{ container: "flex flex-wrap justify-around w-screen" }}
       >
         <div className="text-primary">
           <p className="text-secondary text-3xl font-Barlow-Condensed font-light leading-8">
