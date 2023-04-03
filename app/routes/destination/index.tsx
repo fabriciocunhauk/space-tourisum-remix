@@ -8,13 +8,16 @@ import moon from "../../../public/assets/destination/image-moon.png";
 import titan from "../../../public/assets/destination/image-titan.png";
 import europa from "../../../public/assets/destination/image-europa.png";
 import { useWindowDimensions } from "~/hooks/useWindowDimension";
-import type { LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import type { LoaderArgs, LoaderFunction } from "@remix-run/node";
+import { Link, useLoaderData } from "@remix-run/react";
 import Container from "~/components/Container/Container";
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
+  const url = new URL(request.url);
+  const searchParams = url.searchParams.toString();
+
   const res = await fetch(
-    "https://api.le-systeme-solaire.net/rest/bodies/lune"
+    `https://api.le-systeme-solaire.net/rest/bodies/${searchParams || "moon"}}`
   );
 
   const planet = await res.json();
@@ -67,7 +70,7 @@ export default function DestinationIndex() {
 
   const { planet, planetsData } = useLoaderData();
 
-  console.log({ planet, planetsData });
+  // console.log({ planet, planetsData });
 
   const sm = 640;
 
@@ -90,19 +93,21 @@ export default function DestinationIndex() {
           <h1 className="text-[20px] font-light font-Barlow md:place-self-start md:pl-10 lg:pl-28 lg:text-[28px]">
             01 PICK YOUR DESTINATION
           </h1>
-          {planetsData.map((planet: { image: string; id: number }) => {
-            if (planet.id === planetId) {
-              return (
-                <img
-                  className="w-[300px] h-[300px] mt-10 lg:w-[445px] lg:h-[445px] lg:mb-16"
-                  key={planet.id}
-                  src={planet.image}
-                  alt="planet"
-                />
-              );
+          {planetsData.map(
+            (planet: { image: string; id: number; name: string }) => {
+              if (planet.id === planetId) {
+                return (
+                  <img
+                    className="w-[300px] h-[300px] mt-10 lg:w-[445px] lg:h-[445px] lg:mb-16"
+                    key={planet.id}
+                    src={planet.image}
+                    alt={planet.name}
+                  />
+                );
+              }
+              return null;
             }
-            return null;
-          })}
+          )}
         </div>
         <div className="place-items-center sm:p-28">
           <div className="grid grid-cols-1 place-content-center p-5 md:w-[573px] lg:h-[472px] lg:w-[444px]">
@@ -113,9 +118,12 @@ export default function DestinationIndex() {
                     key={planet.id}
                     className="hover:border-b-2 h-10 text-base"
                   >
-                    <button onClick={() => handleSelection(planet.id)}>
+                    <Link
+                      to={`/destination?${planet.name}`}
+                      onClick={() => handleSelection(planet.id)}
+                    >
                       {planet.name.toUpperCase()}
-                    </button>
+                    </Link>
                   </li>
                 );
               })}
