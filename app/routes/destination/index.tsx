@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { Link, useLoaderData } from "@remix-run/react";
+import type { LoaderArgs, LoaderFunction } from "@remix-run/node";
 import backgroundMobile from "../../../public/assets/destination/background-destination-mobile.jpg";
 import backgroundDesktop from "../../../public/assets/destination/background-destination-desktop.jpg";
-import LayoutContainer from "~/components/layout-container/LayoutContainer";
 import mars from "../../../public/assets/destination/image-mars.png";
 import moon from "../../../public/assets/destination/image-moon.png";
 import titan from "../../../public/assets/destination/image-titan.png";
 import europa from "../../../public/assets/destination/image-europa.png";
+import LayoutContainer from "~/components/layout-container/LayoutContainer";
 import { useWindowDimensions } from "~/hooks/useWindowDimension";
-import type { LoaderArgs, LoaderFunction } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
 import Container from "~/components/Container/Container";
 
 export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
@@ -21,7 +21,7 @@ export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
 
   const planet = await res.json();
 
-  const planetsData: any = [
+  const planetsData = [
     {
       id: 1,
       image: moon,
@@ -68,8 +68,6 @@ export default function DestinationIndex() {
   const { width } = useWindowDimensions();
 
   const { planet, planetsData } = useLoaderData();
-
-  // console.log({ planet, planetsData });
 
   const sm = 640;
 
