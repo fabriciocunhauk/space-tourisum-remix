@@ -4,7 +4,9 @@ node_modules
 .env
 .vercel
 .output
+.prettierrc.json
 
+/app/styles/
 /build/
 /public/build
 /api/index.js
