@@ -1,27 +1,36 @@
 import LayoutContainer from "~/components/layout-container/LayoutContainer";
-import { Navbar } from "~/components/navbar/Navbar";
 import background from "../../public/assets/crew/background-crew-desktop.jpg";
-import douglas from "../../public/assets/crew/image-douglas-hurley.png";
-import mark from "../../public/assets/crew/image-mark-shuttleworth.png";
-import victor from "../../public/assets/crew/image-victor-glover.png";
-import anousheh from "../../public/assets/crew/image-anousheh-ansari.png";
-import { Fragment, useEffect, useState } from "react";
-import Dot from "~/icons/Dot";
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import Container from "~/components/Container/Container";
 import Card from "~/components/Card/Card";
+import SimpleMap from "~/components/GoogleMaps";
 
 export const loader: LoaderFunction = async () => {
-  const res = await fetch("http://api.open-notify.org/astros.json");
-  const data = await res.json();
-  console.log(data);
+  const dataNumberOfPeopleInSpace = await fetch(
+    "http://api.open-notify.org/astros.json"
+  );
+  const dataISScurrentLocation = await fetch(
+    "http://api.open-notify.org/iss-now.json"
+  );
 
-  const numberOfPeople = data.number;
-  const people = data.people;
+  const numberOfPeopleInSpace = await dataNumberOfPeopleInSpace.json();
 
-  return json({ data, numberOfPeople, people });
+  const { iss_position: ISScurrentLocation } =
+    await dataISScurrentLocation.json();
+
+  const { longitude, latitude } = ISScurrentLocation;
+
+  const numberOfPeople = numberOfPeopleInSpace.number;
+  const people = numberOfPeopleInSpace.people;
+
+  return json({
+    numberOfPeople,
+    people,
+    longitude,
+    latitude,
+  });
 };
 
 // const crewData = [
@@ -54,12 +63,23 @@ export const loader: LoaderFunction = async () => {
 //     body: "Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. Ansari was the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the first Iranian in space. ",
 //   },
 // ];
+type PeopleProps = {
+  craft: string;
+  name: string;
+}[];
 
-type LoaderProps = { craft: string; name: string };
+type LoaderProps = {
+  numberOfPeople: number;
+  people: PeopleProps;
+  longitude: string;
+  latitude: string;
+};
 
 export default function Crew() {
-  const { data, numberOfPeople, people } = useLoaderData();
-  // console.log({ data, numberOfPeople, people });
+  const { numberOfPeople, people, longitude, latitude } =
+    useLoaderData<LoaderProps>();
+  console.log({ numberOfPeople, people, longitude, latitude });
+
   return (
     <LayoutContainer image={background} classes={{ root: "text-white" }}>
       <Container
@@ -71,15 +91,16 @@ export default function Crew() {
           <h1 className="text-[20px] font-light lg:text-[28px]">
             NUMBER OF PEOPLE IN SPACE
           </h1>
+
           <span className="text-[250px]">{numberOfPeople}</span>
         </div>
         <div className="flex flex-col gap-4">
           <h1 className="text-[20px] font-light text-center lg:text-[28px]">
             02 MEET YOUR CREW
           </h1>
-          {people.map(({ craft, name }: LoaderProps, idex: number) => {
+          {people.map(({ craft, name }, index) => {
             return (
-              <Card key={idex} classes={{ card: "py-2" }}>
+              <Card key={index} classes={{ card: "py-2" }}>
                 <p>CRAFT: {craft}</p>
                 <p>CREW MEMBER: {name}</p>
               </Card>
@@ -87,6 +108,7 @@ export default function Crew() {
           })}
         </div>
       </Container>
+      <SimpleMap longitude={Number(longitude)} latitude={Number(latitude)} />
     </LayoutContainer>
   );
 }
